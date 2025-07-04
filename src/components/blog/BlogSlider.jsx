@@ -1,33 +1,36 @@
-import React from 'react';
-import Carousel from '../common/Carousel';
-import Button from '../common/Button';
-import { Clock, User, Heart, Share2 } from 'lucide-react';
-import moment from 'moment';
-
-
+import React from "react";
+import Carousel from "../common/Carousel";
+import Button from "../common/Button";
+import { Clock, User, Heart, Share2 } from "lucide-react";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const BlogSlider = ({ blogs }) => {
-  console.log(blogs);
-  
-  const handleLike = (blogId) => {
-    console.log('Liked blog:', blogId);
-  };
+  const navigate = useNavigate();
+
+  // const handleLike = (blogId) => {
+  //   console.log('Liked blog:', blogId);
+  // };
 
   const handleShare = (blog) => {
     if (navigator.share) {
       navigator.share({
         title: blog.title,
         text: blog.description,
-        url: `${window.location.href}${blog?.title?.trim()?.replaceAll(" ","-")?.toLowerCase()}`,
+        url: `${window.location.href}blog/${blog?.id}`,
       });
     } else {
       navigator.clipboard.writeText(window.location.href);
-      console.log('Blog shared:', blog.id);
+      console.log("Blog shared:", blog.id);
     }
   };
 
   const carouselItems = blogs.map((blog) => (
-    <div key={blog.id} className="relative bg-white rounded-2xl shadow-lg overflow-hidden mx-2">
+    <div
+      key={blog.id}
+      className="relative bg-white rounded-2xl shadow-lg overflow-hidden mx-2"
+    >
       <div className="md:flex">
         <div className="md:w-1/2">
           <img
@@ -42,15 +45,13 @@ const BlogSlider = ({ blogs }) => {
               {blog.category?.name || "Other"}
             </span>
           </div>
-          
+
           <h3 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2">
             {blog.title}
           </h3>
-          
-          <p className="text-gray-600 mb-6 line-clamp-3">
-            {blog.description}
-          </p>
-          
+
+          <p className="text-gray-600 mb-6 line-clamp-3">{blog.description}</p>
+
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center text-sm text-gray-500">
               <User className="h-4 w-4 mr-1" />
@@ -62,13 +63,18 @@ const BlogSlider = ({ blogs }) => {
               {moment(blog?.created_at).format("DD-MM-YYYY")}
             </div>
           </div>
-          
+
           <div className="flex items-center justify-between">
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Link
+              target='_blank'
+              to={`/blog/${blog?.id}`}
+              className="inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition duration-200"
+            >
               Read More
-            </Button>
+            </Link>
+
             <div className="flex items-center space-x-2">
-              <Button
+              {/* <Button
                 variant="outline"
                 size="sm"
                 onClick={() => handleLike(blog.id)}
@@ -76,7 +82,7 @@ const BlogSlider = ({ blogs }) => {
               >
                 <Heart className="h-4 w-4" />
                 <span>{blog.likes}</span>
-              </Button>
+              </Button> */}
               <Button
                 variant="outline"
                 size="sm"
@@ -93,9 +99,7 @@ const BlogSlider = ({ blogs }) => {
   ));
 
   return (
-    <Carousel className="w-full max-w-5xl mx-auto">
-      {carouselItems}
-    </Carousel>
+    <Carousel className="w-full max-w-5xl mx-auto">{carouselItems}</Carousel>
   );
 };
 

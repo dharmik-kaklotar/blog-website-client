@@ -47,7 +47,7 @@ const BlogCard = ({ blog }) => {
       navigator.share({
         title: blog.title,
         text: blog.description,
-        url: `${window.location.href}${blog?.title?.trim()?.replaceAll(" ","-")?.toLowerCase()}`,
+        url: `${window.location.href}blog/${blog?.id}`,
       });
     } else {
       navigator.clipboard.writeText(window.location.href);
@@ -92,7 +92,7 @@ const BlogCard = ({ blog }) => {
         </div>
         
         <div className="flex items-center justify-between">
-          <Link to={`${window.location.href}${blog?.title?.trim()?.replaceAll(" ","-")?.toLowerCase()}`} variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50">
+          <Link to={`${window.location.href}blog/${blog?.id}`} variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50" target='_blank'>
             Read More
           </Link>
           <div className="flex items-center space-x-2">

@@ -39,7 +39,7 @@ const Layout = () => {
           {/* Top: Logo + Nav */}
           <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
             <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Blog Admin
+              Blogsy Admin
             </h1>
             <button
               onClick={() => setIsMobileMenuOpen(false)}

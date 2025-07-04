@@ -10,6 +10,7 @@ import CreateBlog from "./components/CreateBlog";
 import { Toaster } from "react-hot-toast";
 import BlogList from "./components/BlogList";
 import BlogHome from "./components/BlogHome";
+import BlogDetail from "./components/BlogDetail";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<Index />} /> */}
           <Route path="/" element={<BlogHome />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin/signup" element={<Signup />} />
+        {/* <Route path="/admin/signup" element={<Signup />} /> */}
         <Route
           path="/admin/dashboard"
           element={
