@@ -163,24 +163,11 @@ const BlogHome = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Stay Updated</h2>
-          <p className="text-gray-300 mb-8">
-            Get the latest trading insights delivered to your inbox
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <Input placeholder="Enter your email" className="flex-1" />
-            <Button className="bg-blue-600 hover:bg-blue-700">Subscribe</Button>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 TradingBlogs. All rights reserved.</p>
+          <p>&copy; 2024 Blogsy. All rights reserved.</p>
         </div>
       </footer>
     </div>
