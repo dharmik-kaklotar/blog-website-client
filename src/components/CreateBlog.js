@@ -312,7 +312,7 @@ const CreateBlog = () => {
                 Select Media Type
               </label>
               <div className="flex gap-3">
-                {["image", "video", "url"].map((type) => (
+                {["image", "url"].map((type) => (
                   <button
                     key={type}
                     type="button"
